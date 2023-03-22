@@ -22,7 +22,7 @@ public class SubscriptionController {
     }
 
     @PostMapping("/subscribe/{eventID}")
-    public ResponseEntity<Void> subscribe(@PathVariable("eventID") Long eventID, @RequestParam("email") String email){
+    public ResponseEntity<Void> subscribe(@PathVariable("eventID") Long eventID, @RequestParam String email){
         ResponseEntity response = service.subscribeToEvent(eventID,email);
         if (response.getStatusCode().is2xxSuccessful())
             return ResponseEntity.ok().build();
@@ -37,4 +37,6 @@ public class SubscriptionController {
 
       return ResponseEntity.notFound().build();
     }
+
+
 }

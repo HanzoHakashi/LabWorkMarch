@@ -39,7 +39,7 @@ public class EventDao extends BaseDao {
                 "from events " +
                 "where id = ?";
         return Optional.ofNullable(DataAccessUtils.singleResult(
-                jdbcTemplate.query(sql,new BeanPropertyRowMapper<>(Event.class),sql)
+                jdbcTemplate.query(sql,new BeanPropertyRowMapper<>(Event.class),id)
         ));
     }
 

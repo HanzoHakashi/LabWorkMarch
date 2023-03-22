@@ -18,8 +18,6 @@ public class InitDataBase {
             eventDao.createTable();
             subscriptionDao.createTable();
 
-            eventDao.deleteAll();
-            subscriptionDao.deleteAll();
         };
     }
 }

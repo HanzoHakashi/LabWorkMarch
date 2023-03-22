@@ -35,13 +35,13 @@ public class SubscriptionService {
     }
 
     public ResponseEntity<?> subscribeToEvent(Long eventId, String email) {
-
+        var eventDao1 = eventDao.findEventByID(eventId);
         if (eventDao.findEventByID(eventId).isEmpty()) {
             return ResponseEntity.notFound().build();
         }
 
-        Event event = new Event();
-        LocalDate eventStartDate = event.getDate();
+
+        LocalDate eventStartDate =eventDao1.get().getDate();
         if (eventStartDate.isBefore(LocalDate.now())) {
             return ResponseEntity.badRequest().body("You can only subscribe to future events.");
         }
